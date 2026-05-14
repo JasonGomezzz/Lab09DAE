@@ -1,75 +1,74 @@
-# React + TypeScript + Vite
+# Lab09DAE — Cinespoilers 🎬
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Laboratorio 09 · Desarrollo de Aplicaciones Empresariales  
+Proyecto React con Vite + TypeScript. Primer componente reutilizable con Props.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Paso 1 — Entorno y carpetas
 
-## React Compiler
+Se creó la carpeta de trabajo `dev/proyectos-react` y se verificaron las versiones de Node y npm.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+![Paso 1](./docs/paso1.png)
 
-Note: This will impact Vite dev & build performances.
+---
 
-## Expanding the ESLint configuration
+## Paso 2 — Crear proyecto con Vite
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm create vite@latest
+# Framework: React · Variant: TypeScript + React Compiler
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+![Paso 2](./docs/paso2.png)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Paso 3 — Servidor corriendo
+
+```bash
+npm install
+npm run dev
 ```
+
+![Paso 3](./docs/paso3.png)
+
+---
+
+## Paso 4 — Primer cambio en App.tsx
+
+Se reemplazó el contenido de demo por el nombre del desarrollador, probando el HMR de Vite.
+
+![Paso 4](./docs/paso4.png)
+
+---
+
+## Paso 5 — Componente Profile con Props
+
+Se creó `src/components/Profile.tsx`, un componente reutilizable que recibe `name` y `rol` como props y se usa dos veces con datos distintos.
+
+```tsx
+const Profile = ({ name = '', rol = '' }: { name: string, rol: string }) => (
+  <header>
+    <h1>{name}</h1>
+    <h2>{rol}</h2>
+  </header>
+)
+```
+
+```tsx
+<Profile name="Jason Gomez" rol="Frontend Developer" />
+<Profile name="Yonsito" rol="Game Developer" />
+```
+
+![Paso 5](./docs/paso5.png)
+
+---
+
+## Stack
+
+`React 19` · `TypeScript` · `Vite` · `Node v26` · `npm 11`
+
+---
+
+*Jason Gomez · 2026*
